@@ -43,11 +43,11 @@ def handle_hello():
 @app.route('/member/<int:id>', methods=['GET'])
 def get_one(id):
     member = jackson_family.get_member(id)
-    if member != True:
+    if member == 'no existe':
         return jsonify("Ha ocurrido un error"), 400
     return jsonify(member), 200
 
-@app.route('/members/<int:id>', methods=['GET'])
+@app.route('/members', methods=['GET'])
 def get_all():
     members = jackson_family.get_all_members()
     return jsonify(members), 200
